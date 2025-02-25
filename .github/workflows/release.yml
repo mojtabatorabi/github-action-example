@@ -18,7 +18,12 @@ jobs:
       ####-## 1t11rr1#٫run: rm .gitignore
       - run: npx semantic-release
         env:
+      
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       
+          run: gh release upload  release${{github.run_number}} github-action-example.zip
+
+          
       - run: >-
           
           git reset --mixed origin/master
