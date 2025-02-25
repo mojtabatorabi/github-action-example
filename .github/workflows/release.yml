@@ -15,7 +15,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-      ####-## 1t111#٫run: rm .gitignore
+      ####-## 1t11rr1#٫run: rm .gitignore
       - run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
