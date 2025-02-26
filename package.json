@@ -21,9 +21,7 @@
     "semantic-release": "^23.0.0"
   },
   "release": {
-    "branches": [
-      "master"
-    ],
+    "branches": ["master", "main"],
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
