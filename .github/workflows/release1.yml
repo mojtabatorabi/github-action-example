@@ -25,7 +25,7 @@ jobs:
           node-version: lts/*
       - run: npm clean-install
       - run: corepack npm audit signatures
-      - run: npx semantic-release --no-ci
+      - run: npx semantic-release --no-ci --dry-run
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         #  ###NPM_TOKEN: ${{ secrets.}}
