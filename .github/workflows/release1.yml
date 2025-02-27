@@ -20,7 +20,7 @@ jobs:
           node-version: 20
       - run: npm ci
       - run: npm run build
-      - name: Get Release Token
+      
         
       - run: npx semantic-release
         env:
