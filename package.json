@@ -9,7 +9,7 @@
   },
   "author": "Gregor Martynus (https://twitter.com/gr2m)",
   "license": "ISC",
-  "repository": "github:probot/example-github-action",
+  "repository": "github:mojtabatorabi/github-action-example",
   "dependencies": {
     "@probot/adapter-github-actions": "^4.0.0"
   },
