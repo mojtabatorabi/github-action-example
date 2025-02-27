@@ -6,7 +6,7 @@
 
 If you build a GitHub Action using Probot, we recommend you watch this repository as we will keep updating it implementing best practises and new APIs.
 
-## Usage
+### Usage
 
 You can use the action from this example repository:
 
