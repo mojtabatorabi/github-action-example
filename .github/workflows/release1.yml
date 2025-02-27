@@ -6,7 +6,7 @@ on:
         - main # or main
 
 permissions:
-  contents: read # for checkout
+  contents: write # for checkout
 
 jobs:
   release:
@@ -28,4 +28,4 @@ jobs:
       - run: npx semantic-release --no-ci --dry-run
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        #  ###NPM_TOKEN: ${{ secrets.}}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
