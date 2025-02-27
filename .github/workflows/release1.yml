@@ -1,31 +1,31 @@
 name: Release
-on:
-  push:
-    branches:
-      
-        - main # or main
 
-permissions:
-  contents: write # for checkout
+on:
+  workflow_dispatch:
 
 jobs:
   release:
-    name: Release
-    runs-on: ubuntu-latest
     permissions:
-      contents: write # to be able to publish a GitHub release
-      issues: write # to be able to comment on released issues
-      pull-requests: write # to be able to comment on released pull requests
-      id-token: write # to enable use of OIDC for npm provenance
+      contents: write
+      issues: write
+      pull-requests: write
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      - uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
+      - uses: actions/checkout@v4
         with:
-          cache: npm
-          node-version: lts/*
-      - run: npm clean-install
-      - run: corepack npm audit signatures
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run build
+      - name: Get Release Token
+        id: get_workflow_token
+        uses: peter-murray/workflow-application-token-action@v3
+        with:
+          application_id: ${{ secrets.RELEASE_APP_ID }}
+          application_private_key: ${{ secrets.RELEASE_APP_CERT }}
       - run: npx semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
