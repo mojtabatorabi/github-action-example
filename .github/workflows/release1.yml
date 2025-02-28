@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     branches:
-      - main  # Release only when changes are pushed to main
+      - main  ## Release only when changes are pushed to main
 
 jobs:
   release:
